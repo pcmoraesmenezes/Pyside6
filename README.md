@@ -1,7 +1,7 @@
 <h1 align="center"> PySide6 </h1>
-<!-- ![githubbanner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/2b6beb94-3e14-4af5-bbda-f64f3027696b)
- -->
- ![banner](/githubbanner.png)
+ ![githubbanner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/2b6beb94-3e14-4af5-bbda-f64f3027696b)
+
+ 
 
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
   - Qt é uma biblioteca usada para a criação de GUI (interface gráfica
