@@ -1,5 +1,5 @@
-    linguagem de programação.![githubbanner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/5c085a68-4994-44b2-a517-74c1bd85f9d0)
 <h1 align="center"> PySide6 </h1>
+    linguagem de programação.![githubbanner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/5c085a68-4994-44b2-a517-74c1bd85f9d0)
 
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
   - Qt é uma biblioteca usada para a criação de GUI (interface gráfica
