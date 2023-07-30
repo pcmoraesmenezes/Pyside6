@@ -9,15 +9,15 @@ app = QApplication(sys.argv)
 window = QMainWindow()
 central_widget = QWidget()
 window.setCentralWidget(central_widget)
-window.setWindowTitle('Minha janela bonita')
+window.setWindowTitle('My beautiful window')
 
-button1 = QPushButton('Texto do botão')
+button1 = QPushButton('Button text')
 button1.setStyleSheet('font-size: 80px;')
 
-button2 = QPushButton('Botão 2')
+button2 = QPushButton('Button 2')
 button2.setStyleSheet('font-size: 40px;')
 
-button3 = QPushButton('Botão 3')
+button3 = QPushButton('Button 3')
 button3.setStyleSheet('font-size: 40px;')
 
 layout = QGridLayout()
