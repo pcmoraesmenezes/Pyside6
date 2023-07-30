@@ -38,8 +38,11 @@
   QLayout -> Um widget de layout que recebe outros widgets
   
 # :hammer: Funcionalidades do projeto
-- `Explicação do código signal_slots_example.py`: descrição da funcionalidade 1
+- `Explicação do código signal_slots_example.py`: 
 
+
+## 📁 Acesso ao projeto
+Você pode [acessar os codigos do projeto aqui][https://github.com/pcmoraesmenezes/Pyside6.git]
 
 <h4 align="center"> 
     :construction:  Projeto em construção  :construction:
