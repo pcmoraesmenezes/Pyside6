@@ -44,6 +44,9 @@
 ## 📁 Acesso ao projeto
 Você pode [acessar os codigos do projeto aqui](https://github.com/pcmoraesmenezes/Pyside6.git)
 
+## 🛠️ Abrir e rodar o projeto
+Para executar os códigos é necessário a biblioteca PySide6, para isso você pode dar um pip install PySide6
+
 <h4 align="center"> 
     :construction:  Projeto em construção  :construction:
 </h4>
