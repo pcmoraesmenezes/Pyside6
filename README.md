@@ -34,3 +34,7 @@
   QLayout -> Um widget de layout que recebe outros widgets
 
 <h2 align="center"> Explicação do código signal_slots_example.py </h2>
+
+<h4 align="center"> 
+    :construction:  Projeto em construção  :construction:
+</h4>
