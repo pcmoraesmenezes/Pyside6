@@ -1,3 +1,4 @@
+    linguagem de programação.![githubbanner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/5c085a68-4994-44b2-a517-74c1bd85f9d0)
 <h1 align="center"> PySide6 </h1>
 
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
@@ -5,7 +6,7 @@
     do usuário) escrita em C++.
     - PySide e PyQt conseguem fazer a ponte (binding) entre o Python e a
     biblioteca para a criação de interfaces gráficas sem ter que usar outra
-    linguagem de programação.
+
   - PySide6 é uma referencia à versão 6 da Qt (Qt 6)
   - Qt é multiplataforma, ou seja, deve funcionar em Windows, Linux e Mac.
 
