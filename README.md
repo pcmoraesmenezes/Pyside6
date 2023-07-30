@@ -1,5 +1,6 @@
 <h1 align="center"> PySide6 </h1>
- ![](/githubbanner.png)
+ ![banner](/githubbanner.png)
+
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
   - Qt é uma biblioteca usada para a criação de GUI (interface gráfica
     do usuário) escrita em C++.
