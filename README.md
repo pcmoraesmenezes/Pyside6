@@ -1,4 +1,4 @@
- -------------------------------Conteudo do modulo---------------------------------------
+<h1 align="center"> PySide6 </h1>
 
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
 # - Qt é uma biblioteca usada para a criação de GUI (interface gráfica
@@ -23,3 +23,14 @@
 #   Licenças são tópicos complexos, portanto, se oriente sobre elas
 #   antes de usar qualquer software de terceiros.
 #   https://tldrlegal.com/license/gnu-lesser-general-public-license-v3-(lgpl-3)
+
+# QApplication e QPushButton de PySide6.QtWidgets
+# QApplication -> O Widget principal da aplicação
+# QPushButton -> Um botão
+# PySide6.QtWidgets -> Onde estão os widgets do PySide6
+
+# QWidget e QLayout de PySide6.QtWidgets
+# QWidget -> genérico
+# QLayout -> Um widget de layout que recebe outros widgets
+
+# Explicação do signal_slots_example.py
