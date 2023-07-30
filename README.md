@@ -1,5 +1,5 @@
 <h1 align="center"> PySide6 </h1>
-    ![githubbanner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/8418862e-09fb-44f8-98a0-32bda181bd04)
+    ![banner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/8418862e-09fb-44f8-98a0-32bda181bd04)
 
 
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
