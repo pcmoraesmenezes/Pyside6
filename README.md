@@ -2,8 +2,8 @@
 <p align="center">
 <img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
 </p>
-![GitHub Org's stars](https://img.shields.io/github/stars/camilafernanda?style=social)
 
+<h2>Algumas explicações e termos </h2>
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
   - Qt é uma biblioteca usada para a criação de GUI (interface gráfica
     do usuário) escrita em C++.
@@ -36,8 +36,10 @@
  QWidget e QLayout de PySide6.QtWidgets
   QWidget -> genérico
   QLayout -> Um widget de layout que recebe outros widgets
+  
+# :hammer: Funcionalidades do projeto
+- `Explicação do código signal_slots_example.py`: descrição da funcionalidade 1
 
-<h2 align="center"> Explicação do código signal_slots_example.py </h2>
 
 <h4 align="center"> 
     :construction:  Projeto em construção  :construction:
