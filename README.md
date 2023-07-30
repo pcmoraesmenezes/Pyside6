@@ -36,6 +36,12 @@
  QWidget e QLayout de PySide6.QtWidgets
   QWidget -> genérico
   QLayout -> Um widget de layout que recebe outros widgets
+
+## ✔️ Técnicas e tecnologias utilizadas
+
+As técnicas e tecnologias utilizadas pra isso são:
+- `Python 3`
+- `Pyside6`
   
 # :hammer: Funcionalidades do projeto
 - `Explicação do código signal_slots_example.py`: 
