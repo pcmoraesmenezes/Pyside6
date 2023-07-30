@@ -1,6 +1,4 @@
 <h1 align="center"> PySide6 </h1>
-![githubbanner](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/6bba82f4-62f7-47cc-b9c9-4f3fcc8e1883)
-
  ![banner](/githubbanner.png)
 
  Essas bibliotecas (PySide e PyQt) usam a biblioteca Qt
