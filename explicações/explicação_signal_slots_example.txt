@@ -1,0 +1,128 @@
+Explicações:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import sys
+from PySide6.QtCore import Slot
+from PySide6.QtWidgets import QApplication, QGridLayout, QMainWindow, QPushButton, QWidget
+
+Nesta primeira parte, estamos importando os módulos necessários do PySide6 para criar a interface gráfica.
+O módulo sys é utilizado para interagir com o sistema operacional e permite que você passe argumentos da linha de comando para o aplicativo.
+QApplication é a classe principal do PySide6 para criar e gerenciar uma aplicação de desktop.
+Outras classes importadas são QMainWindow, QPushButton, QGridLayout e QWidget, que serão usadas para construir a interface gráfica da janela.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+app = QApplication(sys.argv)
+Aqui criamos uma instância da aplicação QApplication. Isso é necessário para inicializar a interface gráfica e gerenciar os eventos da aplicação.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+window = QMainWindow()
+central_widget = QWidget()
+window.setCentralWidget(central_widget)
+window.setWindowTitle('My beautiful window')
+
+Criamos uma janela principal (QMainWindow) chamada window.
+Também criamos um widget central (QWidget) chamado central_widget.
+Definimos o widget central como o widget principal da janela usando window.setCentralWidget.
+Definimos o título da janela como "My beautiful window" usando window.setWindowTitle.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+button1 = QPushButton('Button text')
+button1.setStyleSheet('font-size: 80px;')
+
+button2 = QPushButton('Button 2')
+button2.setStyleSheet('font-size: 40px;')
+
+button3 = QPushButton('Button 3')
+button3.setStyleSheet('font-size: 40px;')
+
+Criamos três botões (QPushButton) com diferentes rótulos.
+Usamos o método setStyleSheet para aplicar estilos de CSS em cada botão, definindo diferentes tamanhos de fonte.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+layout = QGridLayout()
+central_widget.setLayout(layout)
+
+layout.addWidget(button1, 1, 1, 1, 1)
+layout.addWidget(button2, 1, 2, 1, 1)
+layout.addWidget(button3, 3, 1, 1, 2)
+
+Criamos um layout de grade (QGridLayout) chamado layout.
+Definimos o layout do widget central como esse layout de grade usando central_widget.setLayout(layout).
+Usamos o método addWidget para adicionar cada botão ao layout de grade em posições específicas. Por exemplo, addWidget(button1, 1, 1, 1, 1) adiciona o button1 na primeira linha (row 1) e primeira coluna (column 1) da grade com uma extensão de 1 célula na linha e 1 célula na coluna.
+Isso organiza os botões dentro do widget central em um arranjo de grade.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@Slot()
+def slot_example(status_bar):
+    def inner():
+        status_bar.showMessage('Slot is executed')
+    return inner
+
+Definimos um decorador @Slot() para indicar que a função slot_example é um slot.
+A função slot_example cria uma função interna chamada inner. Quando essa função interna é chamada,
+ela exibe a mensagem "Slot is executed" na barra de status (status_bar).
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@Slot()
+def other_slot(checked):
+    print('Is marked? ', checked)
+
+Definimos outro slot chamado other_slot. Quando esse slot é chamado, ele imprime no console a mensagem "Is marked? " seguida do valor de checked (um valor booleano).
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@Slot()
+def thirty_slot(action):
+    def inner():
+        other_slot(action.isChecked())
+    return inner
+
+Definimos mais um slot chamado thirty_slot.
+Essa função cria uma função interna chamada inner. Quando essa função interna é chamada, ela chama o slot other_slot passando
+o resultado de action.isChecked() como argumento. O método isChecked() é usado para verificar se a ação (action) está marcada ou não
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+status_bar = window.statusBar()
+status_bar.showMessage('Show message in bar')
+
+Criamos uma barra de status (status_bar) para a janela principal.
+Usamos status_bar.showMessage para exibir a mensagem "Show message in bar" na barra de status.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+menu = window.menuBar()
+first_menu = menu.addMenu('First menu')
+first_action = first_menu.addAction('First action')
+first_action.triggered.connect(slot_example(status_bar))
+
+Criamos uma barra de menu (menu) para a janela principal.
+Adicionamos um menu chamado "First menu" à barra de menu.
+Em "First menu", adicionamos uma ação chamada "First action". Usando first_action.triggered.connect, conectamos o slot slot_example à ação.
+ Isso significa que quando a ação "First action" for acionada, o slot slot_example será chamado, exibindo a mensagem "Slot is executed" na barra de status.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+seccond_action = first_menu.addAction('Seccond action')
+seccond_action.setCheckable(True)
+seccond_action.toggled.connect(other_slot)
+seccond_action.hovered.connect(thirty_slot(seccond_action))
+
+Criamos outra ação chamada "Seccond action" e a marcamos como verificável com setCheckable(True).
+Isso significa que a ação pode ser marcada (checked) ou desmarcada (unchecked).
+Conectamos o slot other_slot ao sinal toggled, que será chamado sempre que a ação for marcada ou desmarcada. 
+Quando a ação é marcada, o slot other_slot é chamado, exibindo a mensagem "Is marked? True" no console. Quando a ação é desmarcada, o slot other_slot é 
+chamado novamente, mas desta vez exibindo "Is marked? False" no console.
+A linha seccond_action.hovered.connect(thirty_slot(seccond_action)) tenta conectar o sinal hovered da ação a uma função chamada thirty_slot, mas
+o sinal hovered não é conectável diretamente dessa forma.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+button1.clicked.connect(thirty_slot(seccond_action))
+
+Conectamos o clique no button1 ao slot thirty_slot, passando seccond_action como argumento. Isso significa que quando o button1 é clicado, o slot thirty_slot é
+chamado, que, por sua vez, chama o slot other_slot passando o valor atual (marcado ou desmarcado) da ação seccond_action, exibindo a mensagem "Is marked? True" 
+ou "Is marked? False" no console.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+window.show()
+app.exec()
+
+Finalmente, mostramos a janela principal usando window.show().
+Em seguida, iniciamos o loop de eventos da aplicação com app.exec(). Isso faz com que a aplicação seja executada até ser fechada pelo usuário. Durante a execução,
+o programa responderá aos eventos gerados pelos usuários, como cliques em botões ou interações com a interface gráfica.
+
+Algumas coisas extras:
+
+O decorador @Slot() é utilizado para marcar a função como um slot, o que é uma característica específica do PySide6.
+
+O PySide6 é uma biblioteca que implementa o padrão de design chamado "Sinais e Slots" para lidar com eventos e comunicação entre os elementos da interface gráfica. Um slot é uma função que pode ser conectada a um sinal (um evento) e é acionado quando o sinal é emitido.
+
+
+funções inner:
+A ideia é que, ao conectar o sinal a um slot usando a função slot_example, a função interna inner será executada quando o sinal for emitido.
+
+Portanto, o @Slot() é usado para indicar ao PySide6 que a função slot_example é um slot que pode ser conectado a um sinal.
+

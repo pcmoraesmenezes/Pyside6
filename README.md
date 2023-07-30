@@ -49,7 +49,7 @@ As técnicas e tecnologias utilizadas pra isso são:
 # :hammer: Funcionalidades do projeto
 - `Explicação do código signal_slots_example.py`: 
 <br>
-Árquivo contendo a explicação pode ser encontrado nesse link: https://github.com/pcmoraesmenezes/Pyside6/blob/main/explica%C3%A7%C3%B5es/explica%C3%A7%C3%A3o_signal_slots_example
+Árquivo contendo a explicação pode ser encontrado nesse link: https://github.com/pcmoraesmenezes/Pyside6/blob/main/explica%C3%A7%C3%B5es/explica%C3%A7%C3%A3o_signal_slots_example.txt
 
 ## 📁 Acesso ao projeto
 Você pode [acessar os codigos do projeto aqui](https://github.com/pcmoraesmenezes/Pyside6.git)
