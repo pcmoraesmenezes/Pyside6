@@ -45,7 +45,8 @@ As técnicas e tecnologias utilizadas pra isso são:
   
 # :hammer: Funcionalidades do projeto
 - `Explicação do código signal_slots_example.py`: 
-
+<br>
+Árquivo contendo a explicação pode ser encontrado [aqui]()
 
 ## 📁 Acesso ao projeto
 Você pode [acessar os codigos do projeto aqui](https://github.com/pcmoraesmenezes/Pyside6.git)
