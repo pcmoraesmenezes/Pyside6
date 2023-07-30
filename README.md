@@ -42,7 +42,7 @@
 
 
 ## 📁 Acesso ao projeto
-Você pode [acessar os codigos do projeto aqui][https://github.com/pcmoraesmenezes/Pyside6.git]
+Você pode [acessar os codigos do projeto aqui](https://github.com/pcmoraesmenezes/Pyside6.git)
 
 <h4 align="center"> 
     :construction:  Projeto em construção  :construction:
