@@ -1,4 +1,7 @@
 <h1 align="center"> PySide6 </h1>
+
+![PySide6](https://github.com/pcmoraesmenezes/Pyside6/assets/105931834/58f465d0-a3bc-47ab-be35-a63290d0f809)
+
 <p align="center">
 <img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
 </p>
