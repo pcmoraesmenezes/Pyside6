@@ -32,5 +32,5 @@ class MainWindow(QMainWindow):
         self.setFixedSize(self.width(), self.height())  # Evita que o úsuario
         # possa maximizar a tela
 
-    def addToVLayout(self, widget):
+    def addWidgetToVLayout(self, widget):
         self.vLayout.addWidget(widget)
