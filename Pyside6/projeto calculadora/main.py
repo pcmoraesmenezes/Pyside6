@@ -1,22 +1,27 @@
-from PySide6.QtWidgets import QApplication, QLabel, QMainWindow, QWidget
-from PySide6.QtWidgets import QVBoxLayout
-from main_window import MainWindow
+from PySide6.QtWidgets import QApplication
+from display import Display
 
+# from PySide6.QtWidgets import QVBoxLayout
+from main_window import MainWindow
 import sys
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    window = QMainWindow()
+    window = MainWindow()
 
-    central_widget = QWidget()
-    v_layout = QVBoxLayout()
-    central_widget.setLayout(v_layout)
+    # Define o ícone da aplicação
+    window.set_icon_app()
 
-    label1 = QLabel('My text')
-    v_layout.addWidget(label1)
+    # Display
+    display = Display()
+    # display.setPlaceholderText('Digite algo')  # Apaga esse conteudo quando
+    # o usuario digita algo
+    window.addToVLayout(display)
+    window.addToVLayout(Display('Display 1'))
+    window.addToVLayout(Display('Display 2'))
 
-    window.setCentralWidget(central_widget)
+    window.adjustFixedSize()
     window.show()
-
     app.exec()
