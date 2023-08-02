@@ -19,7 +19,7 @@ if __name__ == "__main__":
     window.set_icon_app()
 
     # info
-    info = Info("YOOOO")
+    info = Info("")
     window.addWidgetToVLayout(info)
 
     # Display
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     window.addWidgetToVLayout(display)
 
     # Grid
-    buttonsGrid = ButtonsGrid(display, info)
+    buttonsGrid = ButtonsGrid(display, info, window)
     window.vLayout.addLayout(buttonsGrid)
     # Button
 

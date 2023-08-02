@@ -3,10 +3,14 @@ from PySide6.QtCore import Slot
 from enviroments import MEDIUM_FONT_SIZE
 from utility import isNumOrDot, isEmpty, isValidNumber
 from typing import TYPE_CHECKING
+import math
+import operator
+
 
 if TYPE_CHECKING:
     from display import Display
     from info import Info
+    from main_window import MainWindow
 
 
 class Button(QPushButton):
@@ -25,7 +29,8 @@ class Button(QPushButton):
 
 class ButtonsGrid(QGridLayout):
     def __init__(
-            self, display: 'Display', info: 'Info', *args, **kwargs) -> None:
+            self, display: 'Display', info: 'Info',
+            window: 'MainWindow', *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
         self._gridMask = [
@@ -37,8 +42,14 @@ class ButtonsGrid(QGridLayout):
         ]
         self.display = display
         self.info = info
-        self._equation = '2 + 2'
-        self.equation = 'teeste'
+        self._equation = ''
+        self._equationInitialValue = 'make a wish'
+        self._left = None
+        self._right = None
+        self._op = None
+        self.window = window
+
+        self.equation = self._equationInitialValue
         self._makeGrid()
 
     @property
@@ -51,6 +62,9 @@ class ButtonsGrid(QGridLayout):
         self.info.setText(value)
 
     def _makeGrid(self):
+
+        self.display.eqRequested.connect(lambda: print(123))
+
         for i, row in enumerate(self._gridMask):
             for j, buttonText in enumerate(row):
                 button = Button(buttonText)
@@ -60,7 +74,7 @@ class ButtonsGrid(QGridLayout):
                     self._configSpecialButton(button)
 
                 self.addWidget(button, i, j)
-                slot = self._makeSLot(
+                slot = self._makeSlot(
                     self._insertButtonTextToDisplay,
                     button)
                 self._connectButtonClicked(button, slot)
@@ -74,7 +88,19 @@ class ButtonsGrid(QGridLayout):
         if text == 'C':
             self._connectButtonClicked(button, self._clear)
 
-    def _makeSLot(self, func, *args, **kwargs):
+        if text in '+-/*^':
+            self._connectButtonClicked(
+                button,
+                self._makeSlot(self._operatorClicked, button)
+                )
+
+        if text in '=':
+            self._connectButtonClicked(button, self._eq)
+
+        if text in '◀':
+            self._connectButtonClicked(button, self.display.backspace)
+
+    def _makeSlot(self, func, *args, **kwargs):
         @Slot(bool)
         def realSlot(_):
             func(*args, **kwargs)
@@ -89,5 +115,92 @@ class ButtonsGrid(QGridLayout):
         self.display.insert(buttonText)
 
     def _clear(self):
-        print('vou testar')
+        self._left = None
+        self._right = None
+        self._op = None
+        self.equation = self._equationInitialValue
         self.display.clear()
+
+    def _operatorClicked(self, button):
+        buttonText = button.text()
+        displayText = self.display.text()
+        self.display.clear()
+
+        if not isValidNumber(displayText) and self._left is None:
+            self._showError('Please type a number first')
+            return
+
+        if self._left is None:
+            self._left = float(displayText)
+
+        self._op = buttonText
+        self.equation = f'{self._left} {self._op} ??'
+
+    def _eq(self):
+        displayText = self.display.text()
+
+        if not isValidNumber(displayText):
+            self._showError('Type the value(s)')
+            return
+
+        if self._left is None or self._op is None:
+            self._showError('Incomplete equation')
+            return
+
+        self._right = float(displayText)
+        # self.equation = f'{self._left} {self._op} {self._right}'
+        result = 'error'
+
+        # try:
+        #     if '^' in self.equation and isinstance(self._left, float):
+        #         result = math.pow(self._left, self._right)
+        #     else:
+        #         result = eval(self.equation)  # avalia string como código
+        # except ZeroDivisionError:
+        #     self._showError('Zero Division Error')
+        # except OverflowError:
+        #     self._showError('Stack Overflow')
+        try:
+            if self._op == '+':
+                result = operator.add(self._left, self._right)
+            elif self._op == '-':
+                result = operator.sub(self._left, self._right)
+            elif self._op == '*':
+                result = operator.mul(self._left, self._right)
+            elif self._op == '/':
+                if self._right == 0:
+                    self._showError('Zero Division Error')
+                    return
+                result = operator.truediv(self._left, self._right)
+            elif self._op == '^':
+                result = math.pow(float(self._left), self._right)
+        except OverflowError:
+            self._showError('Stack Overflow')
+        self.display.clear()
+        self.info.setText(f'{self._left} {self._op} {self._right} = {result}')
+        self._left = result
+        self._right = None
+
+        if result == 'error':
+            self._left = None
+
+    def _showError(self, text):
+        msgBox = self.window.makeMsgBox()
+        msgBox.setText(text)
+        msgBox.setIcon(msgBox.Icon.Warning)
+
+        msgBox.setStandardButtons(
+            msgBox.StandardButton.Ok
+            # Para adicionar mais botões basta colocar o |
+            # |
+            # msgBox.StandardButton.Save
+        )
+        # E para obter o botão que o usuario pressionou basta:
+        # result = msgBox.exec()
+        msgBox.exec()
+
+    def _showInfo(self, text):
+        msgBox = self.window.makeMsgBox()
+        msgBox.setText(text)
+        msgBox.setIcon(msgBox.Icon.Information)
+        msgBox.exec()
