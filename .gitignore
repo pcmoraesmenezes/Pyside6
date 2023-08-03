@@ -1,2 +1,3 @@
 venv/
 abacate.py
+.mypy_cache
